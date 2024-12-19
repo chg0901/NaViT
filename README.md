@@ -23,6 +23,7 @@ n = NaViT(
     patch_size = 32,
     num_classes = 1000,
     dim = 1024,
+    depth=3,   # add depth parameters
     heads = 16,
     mlp_dim=2048,
     dropout=0.1,
