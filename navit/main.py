@@ -300,7 +300,10 @@ class NaViT(nn.Module):
                 pos = torch.stack(torch.meshgrid((
                     arange(ph),
                     arange(pw)
-                ), indexing = 'ij'), dim = -1)
+                # TypeError: meshgrid() got an unexpected keyword argument 'indexing'
+                # test with torch 1.9.0
+                # ), indexing = 'ij'), dim = -1)
+                )), dim = -1)
 
                 pos = rearrange(pos, 'h w c -> (h w) c')
                 seq = rearrange(image, 'c (h p1) (w p2) -> (h w) (c p1 p2)', p1 = p, p2 = p)
